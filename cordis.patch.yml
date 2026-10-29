@@ -1,0 +1,38 @@
+# dsh-vibe-assistant-bridge bundle patch: mounts the Vibe Assistant bridge
+# plugin into the host composition of a dsh profile. The plugin listens to
+# stable lifecycle events (agent/pre-step, session/event,
+# agent/turn-stopping) and registers four native tools, forwarding
+# everything to a local Vibe Assistant instance over HTTP (default
+# http://127.0.0.1:9420). Without Vibe Assistant running, every feature
+# degrades silently and the tools return a readable error.
+#
+# Install: `dsh plugin --profile <name> add dsh-vibe-assistant-bridge`
+# (npm registry, or a local path). The `dsh plugin` command installs the
+# package into the profile and reconciles it into the profile's
+# `dsh.profile.bundles` layer list.
+- insert:
+    - id: vibe-assistant-bridge
+      # Node-resolvable package name — must stay in sync with package.json
+      # `name` and the plugin's `export const name` (the entry id).
+      name: dsh-vibe-assistant-bridge
+      config:
+        # Vibe Assistant local HTTP endpoint (loopback only).
+        endpoint: http://127.0.0.1:9420
+        # Per-request timeout for every bridge HTTP call, in milliseconds.
+        timeoutMs: 2000
+        # Max concurrent fire-and-forget reports (observation/usage/collect).
+        maxInflight: 8
+        # Max remembered in-flight tool calls for call_start/call_end pairing.
+        maxPending: 512
+        # Optional offline-snapshot override; by default the plugin falls back
+        # to ~/.dsh/profiles/desktop/plugins/vibe-assistant-memory-snapshot.md.
+        # snapshotPath: ''
+        # Per-feature switches; all default to true. A profile can override a
+        # single row by writing a same-id entry in its user-level
+        # cordis.patch.yml (later layers win per row).
+        features:
+          injection: true
+          observation: true
+          usage: true
+          collect: true
+          tools: true

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Vibe Assistant bridge",
+    "description": "Bridge DeepSeek Harness to Vibe Assistant: shared-memory injection, MCP call observation, token usage reporting, session collection triggers, and shared memory and skill tools."
+  }
+}

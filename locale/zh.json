@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Vibe Assistant 桥接",
+    "description": "将 DeepSeek Harness 接入 Vibe Assistant：共享记忆注入、MCP 调用观测、token 用量上报、会话收集触发，以及共享记忆与技能工具。"
+  }
+}

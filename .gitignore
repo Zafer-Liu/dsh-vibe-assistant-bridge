@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (lib/ is intentionally NOT ignored: the compiled bundle is
+# committed so git installs need no prepare step or build permission)
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Editors and OS noise
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

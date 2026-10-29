@@ -1,0 +1,75 @@
+{
+  "name": "dsh-vibe-assistant-bridge",
+  "version": "0.1.0",
+  "description": "Bridge DeepSeek Harness (dsh) sessions to Vibe Assistant: shared-memory injection, MCP call observation, token usage reporting, session collection triggers, and shared memory/skill tools.",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Zafer_Liu",
+    "url": "https://www.zaferliu.me"
+  },
+  "homepage": "https://github.com/Zafer_Liu/dsh-vibe-assistant-bridge#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zafer_Liu/dsh-vibe-assistant-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zafer_Liu/dsh-vibe-assistant-bridge/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "vibe-assistant",
+    "ai-agent",
+    "llm",
+    "memory",
+    "mcp"
+  ],
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "locale",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0 <0.3.0",
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.5",
+    "@types/node": "^22.13.0",
+    "tsdown": "^0.23.3",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

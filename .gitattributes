@@ -1,0 +1,3 @@
+# Normalize every text file to LF on checkout and commit (Windows CRLF must
+# never leak into the plugin sources, the patch YAML, or the locale files).
+* text=auto eol=lf
